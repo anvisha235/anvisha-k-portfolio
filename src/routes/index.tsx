@@ -74,7 +74,7 @@ function Nav() {
     >
       <nav className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
         <a href="#top" className="font-semibold tracking-tight text-lg">
-          AK<span className="text-primary">.</span>
+          Anvisha<span className="text-primary">.</span>
         </a>
         <ul className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
           {links.map(([label, href]) => (
@@ -110,20 +110,20 @@ function Hero() {
     <section id="top" className="relative pt-40 pb-28 px-6 overflow-hidden">
       <div
         aria-hidden
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/10 blur-[140px] pointer-events-none"
+        className="absolute top-1/2 left-0 w-[800px] h-[800px] rounded-full bg-primary/10 blur-[140px] pointer-events-none -translate-y-1/2 -translate-x-1/3"
       />
-      <div className="relative mx-auto max-w-5xl text-center">
+      <div className="relative mx-auto max-w-6xl text-left">
         <div className="reveal">
           <Pill>Available for opportunities</Pill>
         </div>
         <h1 className="reveal mt-8 text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight">
           Anvisha <span className="text-primary">Kadhao</span>
         </h1>
-        <p className="reveal mt-6 max-w-2xl mx-auto text-lg text-muted-foreground leading-relaxed">
+        <p className="reveal mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
           Aspiring Data Analyst, UI/UX enthusiast, and AI/ML student — turning
           curiosity into thoughtful, useful products.
         </p>
-        <div className="reveal mt-10 flex flex-wrap items-center justify-center gap-3">
+        <div className="reveal mt-10 flex flex-wrap items-center gap-3">
           <a
             href={RESUME_URL}
             target="_blank"
@@ -150,7 +150,7 @@ function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
       <div className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
         {eyebrow}
       </div>
-      <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+      <h2 className="mt-3 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
         {title}
       </h2>
     </div>
@@ -161,7 +161,7 @@ function About() {
   return (
     <section id="about" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="About" title="A little about me." />
+        <SectionTitle eyebrow="Intro" title="About" />
         <div className="grid md:grid-cols-5 gap-10">
           <div className="md:col-span-3 reveal">
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -200,35 +200,62 @@ function About() {
 function Education() {
   const items = [
     {
-      school: "Karnavati University, Gandhinagar",
-      degree: "B.Tech in Computer Science (AI & ML)",
-      meta: "Aug 2023 – Present · CGPA 8.2",
+      period: "Aug 2023 — Present",
+      school: "Karnavati University",
+      location: "Gandhinagar",
+      degree: "B.Tech in CSE — AI & Machine Learning",
+      highlight: "CGPA: 8.2",
     },
     {
+      period: "Completed",
       school: "New Look Sr. Sec. School",
-      degree: "12th Grade",
-      meta: "79.9%",
+      location: "",
+      degree: "12th Grade (Senior Secondary)",
+      highlight: "79.9%",
     },
   ];
   return (
     <section id="education" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="Education" title="Where I've studied." />
-        <div className="relative pl-6 md:pl-10">
-          <div className="absolute left-3 md:left-5 top-2 bottom-2 w-px bg-border" />
-          <div className="space-y-10">
-            {items.map((it) => (
-              <div key={it.school} className="reveal relative">
-                <div className="absolute -left-[14px] md:-left-[22px] top-1 w-9 h-9 rounded-full bg-primary/15 border border-primary/40 flex items-center justify-center glow-red">
-                  <GraduationCap className="w-4 h-4 text-primary" />
+        <SectionTitle eyebrow="Background" title="Education" />
+        <div className="relative">
+          <div className="hidden md:block absolute left-1/2 top-2 bottom-2 w-px bg-border -translate-x-1/2" />
+          <div className="space-y-12 md:space-y-16">
+            {items.map((it, idx) => {
+              const isLeft = idx % 2 === 0;
+              return (
+                <div
+                  key={it.school}
+                  className="reveal relative md:grid md:grid-cols-2 md:gap-12 items-center"
+                >
+                  <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-primary/15 border border-primary/40 items-center justify-center glow-red z-10">
+                    <GraduationCap className="w-5 h-5 text-primary" />
+                  </div>
+                  <div
+                    className={`${
+                      isLeft ? "md:col-start-1 md:pr-12" : "md:col-start-2 md:pl-12"
+                    }`}
+                  >
+                    <div className="rounded-2xl border border-border bg-card p-7 transition-all hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_20px_60px_-20px_oklch(0.62_0.22_25/0.35)]">
+                      <div className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">
+                        {it.period}
+                      </div>
+                      <h3 className="mt-3 text-2xl font-semibold">{it.school}</h3>
+                      {it.location && (
+                        <p className="mt-1 text-sm text-muted-foreground">
+                          {it.location}
+                        </p>
+                      )}
+                      <p className="mt-4 text-muted-foreground">{it.degree}</p>
+                      <div className="mt-5 flex items-center gap-2 text-sm font-medium">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        {it.highlight}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="ml-8 md:ml-10">
-                  <h3 className="text-xl font-semibold">{it.school}</h3>
-                  <p className="mt-1 text-muted-foreground">{it.degree}</p>
-                  <p className="mt-1 text-sm text-muted-foreground/80">{it.meta}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
@@ -262,7 +289,7 @@ function Projects() {
   return (
     <section id="projects" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="Projects" title="Things I've built." />
+        <SectionTitle eyebrow="Work" title="Projects" />
         <div className="grid md:grid-cols-2 gap-6">
           {items.map((p) => (
             <article
@@ -313,7 +340,7 @@ function CaseStudy() {
   return (
     <section id="case-study" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="UI/UX Case Study" title="A deeper look at my design process." />
+        <SectionTitle eyebrow="Design" title="Case Study" />
         <a
           href="https://drive.google.com/file/d/19OZ-o9vlUb3erpspbAgvlJFL4IbaU5yb/view?usp=sharing"
           target="_blank"
@@ -361,7 +388,7 @@ function Skills() {
   return (
     <section id="skills" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="Skills" title="What I work with." />
+        <SectionTitle eyebrow="Toolkit" title="Skills" />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {groups.map((g) => (
             <div
@@ -406,7 +433,7 @@ function Certs() {
   return (
     <section id="certs" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="Certifications" title="Continued learning." />
+        <SectionTitle eyebrow="Learning" title="Certifications" />
         <div className="grid md:grid-cols-3 gap-5">
           {items.map((c) => (
             <a
