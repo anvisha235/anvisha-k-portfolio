@@ -74,7 +74,7 @@ function Nav() {
     >
       <nav className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
         <a href="#top" className="font-semibold tracking-tight text-lg">
-          AK<span className="text-primary">.</span>
+          Anvisha<span className="text-primary">.</span>
         </a>
         <ul className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
           {links.map(([label, href]) => (
