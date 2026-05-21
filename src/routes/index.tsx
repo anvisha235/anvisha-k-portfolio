@@ -110,20 +110,20 @@ function Hero() {
     <section id="top" className="relative pt-40 pb-28 px-6 overflow-hidden">
       <div
         aria-hidden
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/10 blur-[140px] pointer-events-none"
+        className="absolute top-1/2 left-0 w-[800px] h-[800px] rounded-full bg-primary/10 blur-[140px] pointer-events-none -translate-y-1/2 -translate-x-1/3"
       />
-      <div className="relative mx-auto max-w-5xl text-center">
+      <div className="relative mx-auto max-w-6xl text-left">
         <div className="reveal">
           <Pill>Available for opportunities</Pill>
         </div>
         <h1 className="reveal mt-8 text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight">
           Anvisha <span className="text-primary">Kadhao</span>
         </h1>
-        <p className="reveal mt-6 max-w-2xl mx-auto text-lg text-muted-foreground leading-relaxed">
+        <p className="reveal mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
           Aspiring Data Analyst, UI/UX enthusiast, and AI/ML student — turning
           curiosity into thoughtful, useful products.
         </p>
-        <div className="reveal mt-10 flex flex-wrap items-center justify-center gap-3">
+        <div className="reveal mt-10 flex flex-wrap items-center gap-3">
           <a
             href={RESUME_URL}
             target="_blank"
@@ -150,7 +150,7 @@ function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
       <div className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
         {eyebrow}
       </div>
-      <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+      <h2 className="mt-3 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
         {title}
       </h2>
     </div>
