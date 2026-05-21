@@ -340,7 +340,7 @@ function CaseStudy() {
   return (
     <section id="case-study" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="UI/UX Case Study" title="A deeper look at my design process." />
+        <SectionTitle eyebrow="Design" title="Case Study" />
         <a
           href="https://drive.google.com/file/d/19OZ-o9vlUb3erpspbAgvlJFL4IbaU5yb/view?usp=sharing"
           target="_blank"
