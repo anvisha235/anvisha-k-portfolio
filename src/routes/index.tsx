@@ -289,7 +289,7 @@ function Projects() {
   return (
     <section id="projects" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="Projects" title="Things I've built." />
+        <SectionTitle eyebrow="Work" title="Projects" />
         <div className="grid md:grid-cols-2 gap-6">
           {items.map((p) => (
             <article
