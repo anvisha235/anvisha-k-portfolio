@@ -200,35 +200,62 @@ function About() {
 function Education() {
   const items = [
     {
-      school: "Karnavati University, Gandhinagar",
-      degree: "B.Tech in Computer Science (AI & ML)",
-      meta: "Aug 2023 – Present · CGPA 8.2",
+      period: "Aug 2023 — Present",
+      school: "Karnavati University",
+      location: "Gandhinagar",
+      degree: "B.Tech in CSE — AI & Machine Learning",
+      highlight: "CGPA: 8.2",
     },
     {
+      period: "Completed",
       school: "New Look Sr. Sec. School",
-      degree: "12th Grade",
-      meta: "79.9%",
+      location: "",
+      degree: "12th Grade (Senior Secondary)",
+      highlight: "79.9%",
     },
   ];
   return (
     <section id="education" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="Education" title="Where I've studied." />
-        <div className="relative pl-6 md:pl-10">
-          <div className="absolute left-3 md:left-5 top-2 bottom-2 w-px bg-border" />
-          <div className="space-y-10">
-            {items.map((it) => (
-              <div key={it.school} className="reveal relative">
-                <div className="absolute -left-[14px] md:-left-[22px] top-1 w-9 h-9 rounded-full bg-primary/15 border border-primary/40 flex items-center justify-center glow-red">
-                  <GraduationCap className="w-4 h-4 text-primary" />
+        <SectionTitle eyebrow="Background" title="Education" />
+        <div className="relative">
+          <div className="hidden md:block absolute left-1/2 top-2 bottom-2 w-px bg-border -translate-x-1/2" />
+          <div className="space-y-12 md:space-y-16">
+            {items.map((it, idx) => {
+              const isLeft = idx % 2 === 0;
+              return (
+                <div
+                  key={it.school}
+                  className="reveal relative md:grid md:grid-cols-2 md:gap-12 items-center"
+                >
+                  <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-primary/15 border border-primary/40 items-center justify-center glow-red z-10">
+                    <GraduationCap className="w-5 h-5 text-primary" />
+                  </div>
+                  <div
+                    className={`${
+                      isLeft ? "md:col-start-1 md:pr-12" : "md:col-start-2 md:pl-12"
+                    }`}
+                  >
+                    <div className="rounded-2xl border border-border bg-card p-7 transition-all hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_20px_60px_-20px_oklch(0.62_0.22_25/0.35)]">
+                      <div className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">
+                        {it.period}
+                      </div>
+                      <h3 className="mt-3 text-2xl font-semibold">{it.school}</h3>
+                      {it.location && (
+                        <p className="mt-1 text-sm text-muted-foreground">
+                          {it.location}
+                        </p>
+                      )}
+                      <p className="mt-4 text-muted-foreground">{it.degree}</p>
+                      <div className="mt-5 flex items-center gap-2 text-sm font-medium">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        {it.highlight}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="ml-8 md:ml-10">
-                  <h3 className="text-xl font-semibold">{it.school}</h3>
-                  <p className="mt-1 text-muted-foreground">{it.degree}</p>
-                  <p className="mt-1 text-sm text-muted-foreground/80">{it.meta}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
