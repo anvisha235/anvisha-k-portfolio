@@ -433,7 +433,7 @@ function Certs() {
   return (
     <section id="certs" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="Certifications" title="Continued learning." />
+        <SectionTitle eyebrow="Learning" title="Certifications" />
         <div className="grid md:grid-cols-3 gap-5">
           {items.map((c) => (
             <a
