@@ -161,7 +161,7 @@ function About() {
   return (
     <section id="about" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="About" title="A little about me." />
+        <SectionTitle eyebrow="Intro" title="About" />
         <div className="grid md:grid-cols-5 gap-10">
           <div className="md:col-span-3 reveal">
             <p className="text-lg text-muted-foreground leading-relaxed">
