@@ -388,7 +388,7 @@ function Skills() {
   return (
     <section id="skills" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="Skills" title="What I work with." />
+        <SectionTitle eyebrow="Toolkit" title="Skills" />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {groups.map((g) => (
             <div
