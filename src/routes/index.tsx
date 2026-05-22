@@ -15,7 +15,14 @@ import {
   BarChart3,
   Sparkles,
   BookOpen,
+  Laptop,
+  Heart,
+  Star,
+  MapPin,
 } from "lucide-react";
+import avatarWave from "@/assets/avatar-wave.png";
+import avatarFolded from "@/assets/avatar-folded.png";
+import avatarPoint from "@/assets/avatar-point.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -105,39 +112,110 @@ function Pill({ children }: { children: React.ReactNode }) {
   );
 }
 
+/* ----------------------------- Avatar Frames ----------------------------- */
+
+function HeroAvatar() {
+  // Orbiting icons positioned around a glowing red ring.
+  const orbit = [
+    { Icon: Code2, cls: "top-2 left-6", float: "animate-float-slow", color: "text-primary" },
+    { Icon: Laptop, cls: "top-10 -right-2", float: "animate-float-med", color: "text-primary" },
+    { Icon: BarChart3, cls: "bottom-20 -left-4", float: "animate-float-fast", color: "text-primary" },
+    { Icon: Heart, cls: "top-1/2 -right-6", float: "animate-float-slow", color: "text-primary" },
+    { Icon: Sparkles, cls: "top-4 right-12", float: "animate-float-fast", color: "text-primary" },
+    { Icon: Star, cls: "bottom-6 right-2", float: "animate-float-med", color: "text-primary" },
+  ];
+  return (
+    <div className="relative mx-auto w-[300px] sm:w-[360px] md:w-[420px] aspect-square">
+      {/* glowing ring */}
+      <div className="absolute inset-4 rounded-full glow-ring bg-background/30 backdrop-blur-sm" />
+      {/* faint dashed orbits */}
+      <div className="absolute inset-0 rounded-full border border-dashed border-primary/20 animate-spin-slow" />
+      <div className="absolute inset-6 rounded-full border border-dashed border-primary/10 animate-spin-rev" />
+      {/* avatar */}
+      <div className="absolute inset-6 rounded-full overflow-hidden animate-breathe">
+        <img
+          src={avatarWave}
+          alt="Anvisha Kadhao waving hello"
+          className="w-full h-full object-cover object-top scale-110"
+          width={896}
+          height={896}
+        />
+      </div>
+      {/* orbiting icons */}
+      {orbit.map(({ Icon, cls, float, color }, i) => (
+        <div
+          key={i}
+          className={`absolute ${cls} ${float} w-10 h-10 rounded-xl border border-primary/30 bg-card/80 backdrop-blur flex items-center justify-center glow-red`}
+          style={{ animationDelay: `${i * 0.4}s` }}
+        >
+          <Icon className={`w-4 h-4 ${color}`} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function Hero() {
   return (
-    <section id="top" className="relative pt-40 pb-28 px-6 overflow-hidden">
+    <section id="top" className="relative pt-32 pb-24 px-6 overflow-hidden">
       <div
         aria-hidden
         className="absolute top-1/2 left-0 w-[800px] h-[800px] rounded-full bg-primary/10 blur-[140px] pointer-events-none -translate-y-1/2 -translate-x-1/3"
       />
-      <div className="relative mx-auto max-w-6xl text-left">
-        <div className="reveal">
-          <Pill>Available for opportunities</Pill>
+      <div className="relative mx-auto max-w-6xl grid md:grid-cols-2 gap-12 items-center">
+        <div className="text-left order-2 md:order-1">
+          <div className="reveal">
+            <Pill>Available for opportunities</Pill>
+          </div>
+          <p className="reveal mt-7 text-lg text-muted-foreground">
+            Hey there!{" "}
+            <span className="inline-block animate-wave-hand">👋</span> I'm
+          </p>
+          <h1 className="reveal mt-2 text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.05]">
+            Anvisha <br />
+            <span className="text-primary">Kadhao</span>
+          </h1>
+          <p className="reveal mt-6 max-w-xl text-base text-muted-foreground leading-relaxed">
+            Aspiring Data Analyst, UI/UX enthusiast, and AI/ML student — turning
+            curiosity into thoughtful, useful products.
+          </p>
+          <div className="reveal mt-9 flex flex-wrap items-center gap-3">
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-all hover:-translate-y-0.5"
+            >
+              <Download className="w-4 h-4" /> Download Resume
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium hover:bg-card transition-colors"
+            >
+              Get in touch
+            </a>
+          </div>
+          <div className="reveal mt-8 flex items-center gap-3">
+            {[
+              { Icon: Linkedin, href: "https://www.linkedin.com/in/anvisha-kadhao-124670306", label: "LinkedIn" },
+              { Icon: Github, href: "https://github.com/anvisha235", label: "GitHub" },
+              { Icon: Mail, href: "mailto:anvishakadhao7@gmail.com", label: "Email" },
+            ].map(({ Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="w-10 h-10 rounded-full border border-border bg-card/60 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 hover:-translate-y-0.5 transition-all"
+              >
+                <Icon className="w-4 h-4" />
+              </a>
+            ))}
+          </div>
         </div>
-        <h1 className="reveal mt-8 text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight">
-          Anvisha <span className="text-primary">Kadhao</span>
-        </h1>
-        <p className="reveal mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-          Aspiring Data Analyst, UI/UX enthusiast, and AI/ML student — turning
-          curiosity into thoughtful, useful products.
-        </p>
-        <div className="reveal mt-10 flex flex-wrap items-center gap-3">
-          <a
-            href={RESUME_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-all hover:-translate-y-0.5"
-          >
-            <Download className="w-4 h-4" /> Download Resume
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium hover:bg-card transition-colors"
-          >
-            Get in touch
-          </a>
+        <div className="reveal order-1 md:order-2">
+          <HeroAvatar />
         </div>
       </div>
     </section>
@@ -158,37 +236,65 @@ function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
 }
 
 function About() {
+  const chips = ["Creative Thinking", "Detail Oriented", "Problem Solver"];
   return (
     <section id="about" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <SectionTitle eyebrow="Intro" title="About" />
-        <div className="grid md:grid-cols-5 gap-10">
-          <div className="md:col-span-3 reveal">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="reveal">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm an aspiring Data Analyst and UI/UX enthusiast currently
-              studying Computer Science with a specialization in AI &amp; ML.
-              I work at the intersection of <span className="text-foreground">data, design, and technology</span> — using data to ask better
-              questions, design to make answers usable, and code to bring them
-              to life.
+              A creative soul with a love for{" "}
+              <span className="text-foreground">design, data, and delightful user experiences.</span>
             </p>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-              I value clarity, structured thinking, and continuous learning.
-              I'm happiest when I'm shipping small, well-considered things that
-              make a real difference.
+              I blend UI/UX design with data-driven insights to build products
+              that aren't just beautiful, but also impactful — clear,
+              well-considered, and thoughtfully made.
             </p>
-          </div>
-          <div className="md:col-span-2 grid gap-4">
-            <div className="reveal rounded-2xl border border-border bg-card p-5">
-              <div className="text-xs uppercase tracking-wider text-muted-foreground">
-                Focus
-              </div>
-              <div className="mt-2 font-medium">Data · Design · ML</div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              {chips.map((c) => (
+                <span
+                  key={c}
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-primary" /> {c}
+                </span>
+              ))}
             </div>
-            <div className="reveal rounded-2xl border border-border bg-card p-5">
-              <div className="text-xs uppercase tracking-wider text-muted-foreground">
-                Currently
+            <a
+              href="#education"
+              className="mt-9 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-all hover:-translate-y-0.5"
+            >
+              Know more about me <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+          <div className="reveal relative">
+            <div className="relative rounded-3xl border border-primary/30 bg-card/40 backdrop-blur p-4 glow-red overflow-hidden">
+              <div
+                aria-hidden
+                className="absolute inset-0 opacity-30 pointer-events-none"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(oklch(0.62 0.22 25 / 0.25) 1px, transparent 1px)",
+                  backgroundSize: "22px 22px",
+                }}
+              />
+              <div className="relative animate-breathe">
+                <img
+                  src={avatarFolded}
+                  alt="Portrait of Anvisha Kadhao"
+                  loading="lazy"
+                  width={896}
+                  height={896}
+                  className="w-full h-auto rounded-2xl"
+                />
               </div>
-              <div className="mt-2 font-medium">Learning &amp; building</div>
+            </div>
+            <div className="absolute -bottom-4 -right-2 sm:right-4 rotate-6 animate-float-slow">
+              <div className="rounded-2xl border border-primary/40 bg-primary/15 px-5 py-4 text-sm font-medium leading-relaxed text-foreground/90 backdrop-blur glow-red">
+                Learning<br />Designing<br />Building<br />Growing ✨
+              </div>
             </div>
           </div>
         </div>
@@ -267,6 +373,7 @@ function Projects() {
   const items = [
     {
       title: "Product Recommendation System",
+      category: "ML",
       tags: ["Python", "ML", "Web"],
       desc: "Personalized product recommendations driven by collaborative filtering and a clean browsing experience.",
       live: "https://product-recommendation-system-chi.vercel.app",
@@ -274,6 +381,7 @@ function Projects() {
     },
     {
       title: "Recipe Recommendation System",
+      category: "WEB APP",
       tags: ["Python", "Recommender", "UI"],
       desc: "Suggests recipes based on ingredients and preferences, with a focused, friendly interface.",
       live: "https://recipe-recommendation-system-hazel.vercel.app",
@@ -281,6 +389,7 @@ function Projects() {
     },
     {
       title: "Inventory Management System",
+      category: "DATA",
       tags: ["Database", "CRUD"],
       desc: "End-to-end CRUD app for managing stock, suppliers, and orders with a relational schema.",
       code: "https://github.com/anvisha235/Inventory_management",
@@ -290,14 +399,19 @@ function Projects() {
     <section id="projects" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <SectionTitle eyebrow="Work" title="Projects" />
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {items.map((p) => (
             <article
               key={p.title}
-              className="reveal group rounded-2xl border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_20px_60px_-20px_oklch(0.62_0.22_25/0.35)]"
+              className="reveal group relative rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-[0_20px_60px_-20px_oklch(0.62_0.22_25/0.45)]"
             >
-              <h3 className="text-xl font-semibold">{p.title}</h3>
-              <p className="mt-3 text-muted-foreground leading-relaxed">{p.desc}</p>
+              <span className="absolute -top-2 left-5 rounded-md bg-primary px-2.5 py-1 text-[10px] font-bold tracking-wider text-primary-foreground">
+                {p.category}
+              </span>
+              <h3 className="mt-3 text-lg font-semibold">{p.title}</h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                {p.desc}
+              </p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {p.tags.map((t) => (
                   <span
@@ -308,24 +422,27 @@ function Projects() {
                   </span>
                 ))}
               </div>
-              <div className="mt-6 flex flex-wrap gap-4 text-sm">
-                {p.live && (
+              <div className="mt-6 flex items-center justify-between">
+                {p.live ? (
                   <a
                     href={p.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-primary hover:underline"
+                    className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline font-medium"
                   >
-                    <ExternalLink className="w-4 h-4" /> Live
+                    Live Demo <ArrowRight className="w-3.5 h-3.5" />
                   </a>
+                ) : (
+                  <span />
                 )}
                 <a
                   href={p.code}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground"
+                  aria-label="View source code"
+                  className="text-muted-foreground hover:text-foreground"
                 >
-                  <Github className="w-4 h-4" /> Code
+                  <Github className="w-4 h-4" />
                 </a>
               </div>
             </article>
@@ -460,58 +577,64 @@ function Certs() {
 }
 
 function Contact() {
+  const rows = [
+    { Icon: Mail, label: "anvishakadhao7@gmail.com", href: "mailto:anvishakadhao7@gmail.com" },
+    { Icon: Phone, label: "+91 9256966218", href: "tel:+919256966218" },
+    { Icon: MapPin, label: "India", href: null },
+    { Icon: Linkedin, label: "linkedin.com/in/anvisha-kadhao", href: "https://www.linkedin.com/in/anvisha-kadhao-124670306" },
+    { Icon: Github, label: "github.com/anvisha235", href: "https://github.com/anvisha235" },
+  ];
   return (
     <section id="contact" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="reveal relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-card via-card to-primary/10 p-10 md:p-16">
-          <div
-            aria-hidden
-            className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/30 blur-3xl pointer-events-none"
-          />
-          <div className="relative">
-            <div className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-              Contact
+        <SectionTitle eyebrow="Contact" title="Let's connect" />
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div className="reveal space-y-3">
+            {rows.map(({ Icon, label, href }) => {
+              const inner = (
+                <>
+                  <span className="w-10 h-10 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center shrink-0">
+                    <Icon className="w-4 h-4 text-primary" />
+                  </span>
+                  <span className="text-sm md:text-base">{label}</span>
+                </>
+              );
+              return href ? (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 rounded-2xl border border-border bg-card px-5 py-4 hover:border-primary/40 hover:-translate-y-0.5 transition-all"
+                >
+                  {inner}
+                </a>
+              ) : (
+                <div
+                  key={label}
+                  className="flex items-center gap-4 rounded-2xl border border-border bg-card px-5 py-4"
+                >
+                  {inner}
+                </div>
+              );
+            })}
+          </div>
+          <div className="reveal relative">
+            <div className="relative mx-auto max-w-md animate-breathe">
+              <img
+                src={avatarPoint}
+                alt="Anvisha Kadhao pointing toward contact details"
+                loading="lazy"
+                width={768}
+                height={1152}
+                className="w-full h-auto"
+              />
             </div>
-            <h2 className="mt-3 text-4xl md:text-6xl font-bold tracking-tight">
-              Let's build <span className="text-primary">something.</span>
-            </h2>
-            <p className="mt-5 max-w-xl text-lg text-muted-foreground">
-              Open to internships, collaborations, and interesting
-              conversations.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <a
-                href="https://github.com/anvisha235"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-              >
-                <Github className="w-4 h-4" /> GitHub
-              </a>
-              <a
-                href="https://www.linkedin.com/in/anvisha-kadhao-124670306"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-medium hover:bg-card"
-              >
-                <Linkedin className="w-4 h-4" /> LinkedIn
-              </a>
-            </div>
-            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-muted-foreground">
-              <a
-                href="mailto:anvishakadhao7@gmail.com"
-                className="inline-flex items-center gap-2 hover:text-foreground transition-colors"
-              >
-                <Mail className="w-4 h-4 text-primary" />
-                anvishakadhao7@gmail.com
-              </a>
-              <a
-                href="tel:+919256966218"
-                className="inline-flex items-center gap-2 hover:text-foreground transition-colors"
-              >
-                <Phone className="w-4 h-4 text-primary" />
-                +91 9256966218
-              </a>
+            <div className="absolute top-6 left-0 sm:left-4 -rotate-6 max-w-[220px] animate-float-slow">
+              <div className="rounded-2xl border border-primary/40 bg-primary/15 px-5 py-4 text-sm leading-relaxed text-foreground/90 backdrop-blur glow-red">
+                I'm always open to discussing new projects, creative ideas or
+                opportunities to be part of your visions! ✨
+              </div>
             </div>
           </div>
         </div>
