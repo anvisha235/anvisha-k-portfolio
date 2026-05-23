@@ -18,7 +18,6 @@ import {
   Laptop,
   Heart,
   Star,
-  MapPin,
 } from "lucide-react";
 import avatarWave from "@/assets/avatar-wave.png";
 import avatarFolded from "@/assets/avatar-folded.png";
