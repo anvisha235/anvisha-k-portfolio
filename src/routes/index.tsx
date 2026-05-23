@@ -666,10 +666,106 @@ function Footer() {
   );
 }
 
+
+function CustomCursor() {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.matchMedia("(hover: none)").matches) return;
+
+    const dot = document.createElement("div");
+    const ring = document.createElement("div");
+    dot.className = "lv-cursor-dot";
+    ring.className = "lv-cursor-ring";
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+    document.body.classList.add("lv-has-cursor");
+
+    let mx = window.innerWidth / 2;
+    let my = window.innerHeight / 2;
+    let rx = mx;
+    let ry = my;
+    let raf = 0;
+    const trail: HTMLDivElement[] = [];
+    let lastTrailAt = 0;
+
+    const onMove = (e: MouseEvent) => {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
+
+      const now = performance.now();
+      if (now - lastTrailAt > 40) {
+        lastTrailAt = now;
+        const t = document.createElement("div");
+        t.className = "lv-cursor-trail";
+        t.style.transform = `translate(${mx - 3}px, ${my - 3}px)`;
+        document.body.appendChild(t);
+        trail.push(t);
+        window.setTimeout(() => {
+          t.remove();
+          trail.shift();
+        }, 500);
+      }
+    };
+
+    const onOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target && target.closest("a, button, [role='button'], input, textarea, select, label")) {
+        ring.classList.add("is-hover");
+      } else {
+        ring.classList.remove("is-hover");
+      }
+    };
+
+    const tick = () => {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.transform = `translate(${rx - 16}px, ${ry - 16}px)`;
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseover", onOver);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseover", onOver);
+      dot.remove();
+      ring.remove();
+      trail.forEach((t) => t.remove());
+      document.body.classList.remove("lv-has-cursor");
+    };
+  }, []);
+  return null;
+}
+
+function AnimatedBackdrop() {
+  return (
+    <div aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute -top-24 -left-16 w-[420px] h-[420px] rounded-full bg-primary/15 blur-[120px] animate-float-slow" />
+      <div className="absolute top-1/3 right-0 w-[360px] h-[360px] rounded-full bg-primary/10 blur-[120px] animate-float-med" />
+      <div className="absolute bottom-0 left-1/3 w-[300px] h-[300px] rounded-full bg-primary/10 blur-[100px] animate-float-fast" />
+      <svg className="absolute inset-0 w-full h-full opacity-30" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="lvline" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stopColor="oklch(0.62 0.22 25 / 0)" />
+            <stop offset="50%" stopColor="oklch(0.62 0.22 25 / 0.55)" />
+            <stop offset="100%" stopColor="oklch(0.62 0.22 25 / 0)" />
+          </linearGradient>
+        </defs>
+        <path d="M 0 120 Q 300 40 600 140 T 1200 100" stroke="url(#lvline)" strokeWidth="1" fill="none" />
+        <path d="M 0 260 Q 400 200 800 280 T 1600 240" stroke="url(#lvline)" strokeWidth="1" fill="none" />
+      </svg>
+    </div>
+  );
+}
+
 function Index() {
   const ref = useReveal();
   return (
     <div ref={ref} className="min-h-screen bg-background text-foreground antialiased">
+      <CustomCursor />
       <Nav />
       <main>
         <Hero />
