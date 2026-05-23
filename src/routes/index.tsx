@@ -377,6 +377,7 @@ function Projects() {
     {
       title: "Product Recommendation System",
       category: "ML",
+      image: projectRecommendation,
       tags: ["Python", "ML", "Web"],
       desc: "Personalized product recommendations driven by collaborative filtering and a clean browsing experience.",
       live: "https://product-recommendation-system-chi.vercel.app",
@@ -385,6 +386,7 @@ function Projects() {
     {
       title: "Recipe Recommendation System",
       category: "WEB APP",
+      image: projectRecipe,
       tags: ["Python", "Recommender", "UI"],
       desc: "Suggests recipes based on ingredients and preferences, with a focused, friendly interface.",
       live: "https://recipe-recommendation-system-hazel.vercel.app",
@@ -393,6 +395,7 @@ function Projects() {
     {
       title: "Inventory Management System",
       category: "DATA",
+      image: projectInventory,
       tags: ["Database", "CRUD"],
       desc: "End-to-end CRUD app for managing stock, suppliers, and orders with a relational schema.",
       code: "https://github.com/anvisha235/Inventory_management",
@@ -406,47 +409,59 @@ function Projects() {
           {items.map((p) => (
             <article
               key={p.title}
-              className="reveal group relative rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-[0_20px_60px_-20px_oklch(0.62_0.22_25/0.45)]"
+              className="reveal group relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-[0_20px_60px_-20px_oklch(0.62_0.22_25/0.45)]"
             >
-              <span className="absolute -top-2 left-5 rounded-md bg-primary px-2.5 py-1 text-[10px] font-bold tracking-wider text-primary-foreground">
-                {p.category}
-              </span>
-              <h3 className="mt-3 text-lg font-semibold">{p.title}</h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                {p.desc}
-              </p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {p.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full border border-border bg-background/40 px-3 py-1 text-xs text-muted-foreground"
-                  >
-                    {t}
-                  </span>
-                ))}
+              <div className="relative aspect-[16/10] overflow-hidden bg-background/40">
+                <img
+                  src={p.image}
+                  alt={`${p.title} preview`}
+                  loading="lazy"
+                  width={1024}
+                  height={640}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <span className="absolute bottom-3 left-3 rounded-md bg-primary px-2.5 py-1 text-[10px] font-bold tracking-wider text-primary-foreground shadow-lg">
+                  {p.category}
+                </span>
               </div>
-              <div className="mt-6 flex items-center justify-between">
-                {p.live ? (
+              <div className="p-6">
+                <h3 className="text-lg font-semibold">{p.title}</h3>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                  {p.desc}
+                </p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-border bg-background/40 px-3 py-1 text-xs text-muted-foreground"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-6 flex items-center justify-between">
+                  {p.live ? (
+                    <a
+                      href={p.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline font-medium"
+                    >
+                      Live Demo <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  ) : (
+                    <span />
+                  )}
                   <a
-                    href={p.live}
+                    href={p.code}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline font-medium"
+                    aria-label="View source code"
+                    className="text-muted-foreground hover:text-foreground"
                   >
-                    Live Demo <ArrowRight className="w-3.5 h-3.5" />
+                    <Github className="w-4 h-4" />
                   </a>
-                ) : (
-                  <span />
-                )}
-                <a
-                  href={p.code}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="View source code"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  <Github className="w-4 h-4" />
-                </a>
+                </div>
               </div>
             </article>
           ))}
