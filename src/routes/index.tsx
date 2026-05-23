@@ -23,6 +23,9 @@ import {
 import avatarWave from "@/assets/avatar-wave.png";
 import avatarFolded from "@/assets/avatar-folded.png";
 import avatarPoint from "@/assets/avatar-point.png";
+import projectRecommendation from "@/assets/project-recommendation.jpg";
+import projectRecipe from "@/assets/project-recipe.jpg";
+import projectInventory from "@/assets/project-inventory.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
