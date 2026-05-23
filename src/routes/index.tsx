@@ -568,65 +568,71 @@ function Certs() {
 }
 
 function Contact() {
-  const rows = [
-    { Icon: Mail, label: "anvishakadhao7@gmail.com", href: "mailto:anvishakadhao7@gmail.com" },
-    { Icon: Phone, label: "+91 9256966218", href: "tel:+919256966218" },
-    { Icon: MapPin, label: "India", href: null },
-    { Icon: Linkedin, label: "linkedin.com/in/anvisha-kadhao", href: "https://www.linkedin.com/in/anvisha-kadhao-124670306" },
-    { Icon: Github, label: "github.com/anvisha235", href: "https://github.com/anvisha235" },
-  ];
   return (
     <section id="contact" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="Contact" title="Let's connect" />
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div className="reveal space-y-3">
-            {rows.map(({ Icon, label, href }) => {
-              const inner = (
-                <>
-                  <span className="w-10 h-10 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center shrink-0">
-                    <Icon className="w-4 h-4 text-primary" />
-                  </span>
-                  <span className="text-sm md:text-base">{label}</span>
-                </>
-              );
-              return href ? (
+        <div className="grid md:grid-cols-[1fr_auto] gap-10 items-end">
+          <div className="reveal relative overflow-hidden rounded-3xl border border-border bg-card/60 backdrop-blur p-10 md:p-14">
+            <div
+              aria-hidden
+              className="absolute -top-32 -right-32 w-[420px] h-[420px] rounded-full bg-primary/25 blur-[120px] pointer-events-none"
+            />
+            <div className="relative">
+              <div className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
+                Contact
+              </div>
+              <h2 className="mt-4 text-5xl md:text-6xl font-bold tracking-tight leading-[1.05]">
+                Let&rsquo;s build <span className="text-primary">something.</span>
+              </h2>
+              <p className="mt-5 text-lg text-muted-foreground max-w-xl">
+                Open to internships, collaborations, and interesting
+                conversations.
+              </p>
+              <div className="mt-9 flex flex-wrap items-center gap-3">
                 <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
+                  href="https://github.com/anvisha235"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 rounded-2xl border border-border bg-card px-5 py-4 hover:border-primary/40 hover:-translate-y-0.5 transition-all"
+                  className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-all hover:-translate-y-0.5"
                 >
-                  {inner}
+                  <Github className="w-4 h-4" /> GitHub
                 </a>
-              ) : (
-                <div
-                  key={label}
-                  className="flex items-center gap-4 rounded-2xl border border-border bg-card px-5 py-4"
+                <a
+                  href="https://www.linkedin.com/in/anvisha-kadhao-124670306"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-background/40 px-6 py-3 text-sm font-medium hover:border-primary/40 transition-all hover:-translate-y-0.5"
                 >
-                  {inner}
-                </div>
-              );
-            })}
-          </div>
-          <div className="reveal relative">
-            <div className="relative mx-auto max-w-md animate-breathe">
-              <img
-                src={avatarPoint}
-                alt="Anvisha Kadhao pointing toward contact details"
-                loading="lazy"
-                width={768}
-                height={1152}
-                className="w-full h-auto"
-              />
-            </div>
-            <div className="absolute top-6 left-0 sm:left-4 -rotate-6 max-w-[220px] animate-float-slow">
-              <div className="rounded-2xl border border-primary/40 bg-primary/15 px-5 py-4 text-sm leading-relaxed text-foreground/90 backdrop-blur glow-red">
-                I'm always open to discussing new projects, creative ideas or
-                opportunities to be part of your visions! ✨
+                  <Linkedin className="w-4 h-4" /> LinkedIn
+                </a>
+              </div>
+              <div className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-4 text-sm">
+                <a
+                  href="mailto:anvishakadhao7@gmail.com"
+                  className="inline-flex items-center gap-2.5 text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Mail className="w-4 h-4 text-primary" />
+                  anvishakadhao7@gmail.com
+                </a>
+                <a
+                  href="tel:+919256966218"
+                  className="inline-flex items-center gap-2.5 text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Phone className="w-4 h-4 text-primary" />
+                  +91 9256966218
+                </a>
               </div>
             </div>
+          </div>
+          <div className="reveal hidden md:block relative w-[260px] lg:w-[300px] shrink-0">
+            <img
+              src={avatarPoint}
+              alt="Anvisha Kadhao pointing toward contact details"
+              loading="lazy"
+              width={768}
+              height={1152}
+              className="w-full h-auto animate-breathe"
+            />
           </div>
         </div>
       </div>
