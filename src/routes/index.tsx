@@ -239,65 +239,38 @@ function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
 }
 
 function About() {
-  const chips = ["Creative Thinking", "Detail Oriented", "Problem Solver"];
   return (
     <section id="about" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <SectionTitle eyebrow="Intro" title="About" />
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="reveal">
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          <div className="reveal space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              A creative soul with a love for{" "}
-              <span className="text-foreground">design, data, and delightful user experiences.</span>
+              I'm an aspiring Data Analyst and UI/UX enthusiast currently
+              studying Computer Science with a specialization in AI &amp; ML. I
+              work at the intersection of{" "}
+              <span className="text-foreground">data, design, and technology</span>{" "}
+              — using data to ask better questions, design to make answers
+              usable, and code to bring them to life.
             </p>
-            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-              I blend UI/UX design with data-driven insights to build products
-              that aren't just beautiful, but also impactful — clear,
-              well-considered, and thoughtfully made.
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              I value clarity, structured thinking, and continuous learning.
+              I'm happiest when I'm shipping small, well-considered things that
+              make a real difference.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              {chips.map((c) => (
-                <span
-                  key={c}
-                  className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-primary" /> {c}
-                </span>
-              ))}
-            </div>
-            <a
-              href="#education"
-              className="mt-9 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-all hover:-translate-y-0.5"
-            >
-              Know more about me <ArrowRight className="w-3.5 h-3.5" />
-            </a>
           </div>
-          <div className="reveal relative">
-            <div className="relative rounded-3xl border border-primary/30 bg-card/40 backdrop-blur p-4 glow-red overflow-hidden">
-              <div
-                aria-hidden
-                className="absolute inset-0 opacity-30 pointer-events-none"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(oklch(0.62 0.22 25 / 0.25) 1px, transparent 1px)",
-                  backgroundSize: "22px 22px",
-                }}
-              />
-              <div className="relative animate-breathe">
-                <img
-                  src={avatarFolded}
-                  alt="Portrait of Anvisha Kadhao"
-                  loading="lazy"
-                  width={896}
-                  height={896}
-                  className="w-full h-auto rounded-2xl"
-                />
+          <div className="reveal space-y-5">
+            <div className="rounded-2xl border border-border bg-card/60 backdrop-blur px-6 py-5">
+              <div className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
+                Focus
               </div>
+              <p className="mt-2 text-lg font-medium">Data · Design · ML</p>
             </div>
-            <div className="absolute -bottom-4 -right-2 sm:right-4 rotate-6 animate-float-slow">
-              <div className="rounded-2xl border border-primary/40 bg-primary/15 px-5 py-4 text-sm font-medium leading-relaxed text-foreground/90 backdrop-blur glow-red">
-                Learning<br />Designing<br />Building<br />Growing ✨
+            <div className="rounded-2xl border border-border bg-card/60 backdrop-blur px-6 py-5">
+              <div className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
+                Currently
               </div>
+              <p className="mt-2 text-lg font-medium">Learning &amp; building</p>
             </div>
           </div>
         </div>
