@@ -18,6 +18,7 @@ import {
   Laptop,
   Heart,
   Star,
+  MapPin,
 } from "lucide-react";
 import avatarWave from "@/assets/avatar-wave.png";
 import avatarFolded from "@/assets/avatar-folded.png";
@@ -238,38 +239,65 @@ function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
 }
 
 function About() {
+  const chips = ["Creative Thinking", "Detail Oriented", "Problem Solver"];
   return (
     <section id="about" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <SectionTitle eyebrow="Intro" title="About" />
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          <div className="reveal space-y-6">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="reveal">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm an aspiring Data Analyst and UI/UX enthusiast currently
-              studying Computer Science with a specialization in AI &amp; ML. I
-              work at the intersection of{" "}
-              <span className="text-foreground">data, design, and technology</span>{" "}
-              — using data to ask better questions, design to make answers
-              usable, and code to bring them to life.
+              A creative soul with a love for{" "}
+              <span className="text-foreground">design, data, and delightful user experiences.</span>
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              I value clarity, structured thinking, and continuous learning.
-              I'm happiest when I'm shipping small, well-considered things that
-              make a real difference.
+            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
+              I blend UI/UX design with data-driven insights to build products
+              that aren't just beautiful, but also impactful — clear,
+              well-considered, and thoughtfully made.
             </p>
-          </div>
-          <div className="reveal space-y-5">
-            <div className="rounded-2xl border border-border bg-card/60 backdrop-blur px-6 py-5">
-              <div className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-                Focus
-              </div>
-              <p className="mt-2 text-lg font-medium">Data · Design · ML</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              {chips.map((c) => (
+                <span
+                  key={c}
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-primary" /> {c}
+                </span>
+              ))}
             </div>
-            <div className="rounded-2xl border border-border bg-card/60 backdrop-blur px-6 py-5">
-              <div className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-                Currently
+            <a
+              href="#education"
+              className="mt-9 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-all hover:-translate-y-0.5"
+            >
+              Know more about me <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+          <div className="reveal relative">
+            <div className="relative rounded-3xl border border-primary/30 bg-card/40 backdrop-blur p-4 glow-red overflow-hidden">
+              <div
+                aria-hidden
+                className="absolute inset-0 opacity-30 pointer-events-none"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(oklch(0.62 0.22 25 / 0.25) 1px, transparent 1px)",
+                  backgroundSize: "22px 22px",
+                }}
+              />
+              <div className="relative animate-breathe">
+                <img
+                  src={avatarFolded}
+                  alt="Portrait of Anvisha Kadhao"
+                  loading="lazy"
+                  width={896}
+                  height={896}
+                  className="w-full h-auto rounded-2xl"
+                />
               </div>
-              <p className="mt-2 text-lg font-medium">Learning &amp; building</p>
+            </div>
+            <div className="absolute -bottom-4 -right-2 sm:right-4 rotate-6 animate-float-slow">
+              <div className="rounded-2xl border border-primary/40 bg-primary/15 px-5 py-4 text-sm font-medium leading-relaxed text-foreground/90 backdrop-blur glow-red">
+                Learning<br />Designing<br />Building<br />Growing ✨
+              </div>
             </div>
           </div>
         </div>
@@ -493,31 +521,14 @@ function Skills() {
     { icon: Code2, title: "Tools", items: ["GitHub", "VS Code", "Google Colab"] },
   ];
   return (
-    <section id="skills" className="relative scroll-mt-20 px-6 py-24 overflow-hidden">
-      <AnimatedBackdrop />
-      <div className="relative mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-[1fr_auto] gap-8 items-end mb-12">
-          <SectionTitle eyebrow="Toolkit" title="Skills" />
-          <div className="reveal hidden md:block relative w-[180px] lg:w-[210px] shrink-0 -mb-2">
-            <div
-              aria-hidden
-              className="absolute inset-0 -m-6 rounded-full bg-primary/20 blur-3xl"
-            />
-            <img
-              src={avatarFolded}
-              alt="Anvisha leaning on her skills"
-              loading="lazy"
-              width={896}
-              height={896}
-              className="relative w-full h-auto animate-float-slow"
-            />
-          </div>
-        </div>
-        <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <section id="skills" className="scroll-mt-20 px-6 py-24">
+      <div className="mx-auto max-w-6xl">
+        <SectionTitle eyebrow="Toolkit" title="Skills" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {groups.map((g) => (
             <div
               key={g.title}
-              className="reveal rounded-2xl border border-border bg-card/70 backdrop-blur p-6 transition-colors hover:border-primary/40"
+              className="reveal rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
             >
               <div className="w-10 h-10 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center">
                 <g.icon className="w-4 h-4 text-primary" />
@@ -584,71 +595,65 @@ function Certs() {
 }
 
 function Contact() {
+  const rows = [
+    { Icon: Mail, label: "anvishakadhao7@gmail.com", href: "mailto:anvishakadhao7@gmail.com" },
+    { Icon: Phone, label: "+91 9256966218", href: "tel:+919256966218" },
+    { Icon: MapPin, label: "India", href: null },
+    { Icon: Linkedin, label: "linkedin.com/in/anvisha-kadhao", href: "https://www.linkedin.com/in/anvisha-kadhao-124670306" },
+    { Icon: Github, label: "github.com/anvisha235", href: "https://github.com/anvisha235" },
+  ];
   return (
     <section id="contact" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-[1fr_auto] gap-10 items-end">
-          <div className="reveal relative overflow-hidden rounded-3xl border border-border bg-card/60 backdrop-blur p-10 md:p-14">
-            <div
-              aria-hidden
-              className="absolute -top-32 -right-32 w-[420px] h-[420px] rounded-full bg-primary/25 blur-[120px] pointer-events-none"
-            />
-            <div className="relative">
-              <div className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-                Contact
-              </div>
-              <h2 className="mt-4 text-5xl md:text-6xl font-bold tracking-tight leading-[1.05]">
-                Let&rsquo;s build <span className="text-primary">something.</span>
-              </h2>
-              <p className="mt-5 text-lg text-muted-foreground max-w-xl">
-                Open to internships, collaborations, and interesting
-                conversations.
-              </p>
-              <div className="mt-9 flex flex-wrap items-center gap-3">
+        <SectionTitle eyebrow="Contact" title="Let's connect" />
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div className="reveal space-y-3">
+            {rows.map(({ Icon, label, href }) => {
+              const inner = (
+                <>
+                  <span className="w-10 h-10 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center shrink-0">
+                    <Icon className="w-4 h-4 text-primary" />
+                  </span>
+                  <span className="text-sm md:text-base">{label}</span>
+                </>
+              );
+              return href ? (
                 <a
-                  href="https://github.com/anvisha235"
-                  target="_blank"
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-all hover:-translate-y-0.5"
+                  className="flex items-center gap-4 rounded-2xl border border-border bg-card px-5 py-4 hover:border-primary/40 hover:-translate-y-0.5 transition-all"
                 >
-                  <Github className="w-4 h-4" /> GitHub
+                  {inner}
                 </a>
-                <a
-                  href="https://www.linkedin.com/in/anvisha-kadhao-124670306"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-background/40 px-6 py-3 text-sm font-medium hover:border-primary/40 transition-all hover:-translate-y-0.5"
+              ) : (
+                <div
+                  key={label}
+                  className="flex items-center gap-4 rounded-2xl border border-border bg-card px-5 py-4"
                 >
-                  <Linkedin className="w-4 h-4" /> LinkedIn
-                </a>
-              </div>
-              <div className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-4 text-sm">
-                <a
-                  href="mailto:anvishakadhao7@gmail.com"
-                  className="inline-flex items-center gap-2.5 text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Mail className="w-4 h-4 text-primary" />
-                  anvishakadhao7@gmail.com
-                </a>
-                <a
-                  href="tel:+919256966218"
-                  className="inline-flex items-center gap-2.5 text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Phone className="w-4 h-4 text-primary" />
-                  +91 9256966218
-                </a>
+                  {inner}
+                </div>
+              );
+            })}
+          </div>
+          <div className="reveal relative">
+            <div className="relative mx-auto max-w-md animate-breathe">
+              <img
+                src={avatarPoint}
+                alt="Anvisha Kadhao pointing toward contact details"
+                loading="lazy"
+                width={768}
+                height={1152}
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="absolute top-6 left-0 sm:left-4 -rotate-6 max-w-[220px] animate-float-slow">
+              <div className="rounded-2xl border border-primary/40 bg-primary/15 px-5 py-4 text-sm leading-relaxed text-foreground/90 backdrop-blur glow-red">
+                I'm always open to discussing new projects, creative ideas or
+                opportunities to be part of your visions! ✨
               </div>
             </div>
-          </div>
-          <div className="reveal hidden md:block relative w-[260px] lg:w-[300px] shrink-0">
-            <img
-              src={avatarPoint}
-              alt="Anvisha Kadhao pointing toward contact details"
-              loading="lazy"
-              width={768}
-              height={1152}
-              className="w-full h-auto animate-breathe"
-            />
           </div>
         </div>
       </div>
@@ -666,106 +671,10 @@ function Footer() {
   );
 }
 
-
-function CustomCursor() {
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.matchMedia("(hover: none)").matches) return;
-
-    const dot = document.createElement("div");
-    const ring = document.createElement("div");
-    dot.className = "lv-cursor-dot";
-    ring.className = "lv-cursor-ring";
-    document.body.appendChild(dot);
-    document.body.appendChild(ring);
-    document.body.classList.add("lv-has-cursor");
-
-    let mx = window.innerWidth / 2;
-    let my = window.innerHeight / 2;
-    let rx = mx;
-    let ry = my;
-    let raf = 0;
-    const trail: HTMLDivElement[] = [];
-    let lastTrailAt = 0;
-
-    const onMove = (e: MouseEvent) => {
-      mx = e.clientX;
-      my = e.clientY;
-      dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
-
-      const now = performance.now();
-      if (now - lastTrailAt > 40) {
-        lastTrailAt = now;
-        const t = document.createElement("div");
-        t.className = "lv-cursor-trail";
-        t.style.transform = `translate(${mx - 3}px, ${my - 3}px)`;
-        document.body.appendChild(t);
-        trail.push(t);
-        window.setTimeout(() => {
-          t.remove();
-          trail.shift();
-        }, 500);
-      }
-    };
-
-    const onOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (target && target.closest("a, button, [role='button'], input, textarea, select, label")) {
-        ring.classList.add("is-hover");
-      } else {
-        ring.classList.remove("is-hover");
-      }
-    };
-
-    const tick = () => {
-      rx += (mx - rx) * 0.18;
-      ry += (my - ry) * 0.18;
-      ring.style.transform = `translate(${rx - 16}px, ${ry - 16}px)`;
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("mouseover", onOver);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mouseover", onOver);
-      dot.remove();
-      ring.remove();
-      trail.forEach((t) => t.remove());
-      document.body.classList.remove("lv-has-cursor");
-    };
-  }, []);
-  return null;
-}
-
-function AnimatedBackdrop() {
-  return (
-    <div aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute -top-24 -left-16 w-[420px] h-[420px] rounded-full bg-primary/15 blur-[120px] animate-float-slow" />
-      <div className="absolute top-1/3 right-0 w-[360px] h-[360px] rounded-full bg-primary/10 blur-[120px] animate-float-med" />
-      <div className="absolute bottom-0 left-1/3 w-[300px] h-[300px] rounded-full bg-primary/10 blur-[100px] animate-float-fast" />
-      <svg className="absolute inset-0 w-full h-full opacity-30" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="lvline" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0%" stopColor="oklch(0.62 0.22 25 / 0)" />
-            <stop offset="50%" stopColor="oklch(0.62 0.22 25 / 0.55)" />
-            <stop offset="100%" stopColor="oklch(0.62 0.22 25 / 0)" />
-          </linearGradient>
-        </defs>
-        <path d="M 0 120 Q 300 40 600 140 T 1200 100" stroke="url(#lvline)" strokeWidth="1" fill="none" />
-        <path d="M 0 260 Q 400 200 800 280 T 1600 240" stroke="url(#lvline)" strokeWidth="1" fill="none" />
-      </svg>
-    </div>
-  );
-}
-
 function Index() {
   const ref = useReveal();
   return (
     <div ref={ref} className="min-h-screen bg-background text-foreground antialiased">
-      <CustomCursor />
       <Nav />
       <main>
         <Hero />
