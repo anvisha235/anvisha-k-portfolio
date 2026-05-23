@@ -494,14 +494,31 @@ function Skills() {
     { icon: Code2, title: "Tools", items: ["GitHub", "VS Code", "Google Colab"] },
   ];
   return (
-    <section id="skills" className="scroll-mt-20 px-6 py-24">
-      <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="Toolkit" title="Skills" />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <section id="skills" className="relative scroll-mt-20 px-6 py-24 overflow-hidden">
+      <AnimatedBackdrop />
+      <div className="relative mx-auto max-w-6xl">
+        <div className="grid md:grid-cols-[1fr_auto] gap-8 items-end mb-12">
+          <SectionTitle eyebrow="Toolkit" title="Skills" />
+          <div className="reveal hidden md:block relative w-[180px] lg:w-[210px] shrink-0 -mb-2">
+            <div
+              aria-hidden
+              className="absolute inset-0 -m-6 rounded-full bg-primary/20 blur-3xl"
+            />
+            <img
+              src={avatarFolded}
+              alt="Anvisha leaning on her skills"
+              loading="lazy"
+              width={896}
+              height={896}
+              className="relative w-full h-auto animate-float-slow"
+            />
+          </div>
+        </div>
+        <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {groups.map((g) => (
             <div
               key={g.title}
-              className="reveal rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
+              className="reveal rounded-2xl border border-border bg-card/70 backdrop-blur p-6 transition-colors hover:border-primary/40"
             >
               <div className="w-10 h-10 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center">
                 <g.icon className="w-4 h-4 text-primary" />
