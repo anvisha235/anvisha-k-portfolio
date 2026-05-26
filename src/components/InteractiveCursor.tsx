@@ -9,10 +9,12 @@ import { useEffect, useRef, useState } from "react";
 export function InteractiveCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
+  const ringInnerRef = useRef<HTMLDivElement>(null);
   const [hovering, setHovering] = useState(false);
   const [moving, setMoving] = useState(false);
   const [clicking, setClicking] = useState(false);
   const [visible, setVisible] = useState(false);
+
 
   useEffect(() => {
     // Hide on touch devices
