@@ -102,21 +102,29 @@ export function InteractiveCursor() {
       />
       <div
         ref={ringRef}
-        className="ic-root pointer-events-none fixed left-0 top-0 z-[9998] rounded-full border border-primary transition-[opacity,width,height,background-color,border-color] duration-200 ease-out"
-        style={{
-          opacity: visible ? 1 : 0,
-          width: hovering ? "3rem" : clicking ? "1.5rem" : "2.25rem",
-          height: hovering ? "3rem" : clicking ? "1.5rem" : "2.25rem",
-          backgroundColor: hovering
-            ? "oklch(0.62 0.22 25 / 0.15)"
-            : "transparent",
-          borderColor: "oklch(0.62 0.22 25 / 0.7)",
-          boxShadow: hovering
-            ? "0 0 30px oklch(0.62 0.22 25 / 0.55)"
-            : "0 0 16px oklch(0.62 0.22 25 / 0.25)",
-          transform: `translate3d(0,0,0) translate(-50%, -50%) ${moving && !hovering ? "scale(1.15)" : "scale(1)"}`,
-        }}
-      />
+        className="ic-root pointer-events-none fixed left-0 top-0 z-[9998]"
+        style={{ opacity: visible ? 1 : 0, transition: "opacity 200ms" }}
+      >
+        <div
+          ref={ringInnerRef}
+          className="rounded-full border transition-all duration-200 ease-out"
+          style={{
+            width: hovering ? "3rem" : clicking ? "1.5rem" : "2.25rem",
+            height: hovering ? "3rem" : clicking ? "1.5rem" : "2.25rem",
+            marginLeft: hovering ? "-1.5rem" : clicking ? "-0.75rem" : "-1.125rem",
+            marginTop: hovering ? "-1.5rem" : clicking ? "-0.75rem" : "-1.125rem",
+            backgroundColor: hovering
+              ? "oklch(0.62 0.22 25 / 0.15)"
+              : "transparent",
+            borderColor: "oklch(0.62 0.22 25 / 0.7)",
+            boxShadow: hovering
+              ? "0 0 30px oklch(0.62 0.22 25 / 0.55)"
+              : "0 0 16px oklch(0.62 0.22 25 / 0.25)",
+            transform: moving && !hovering ? "scale(1.15)" : "scale(1)",
+          }}
+        />
+      </div>
+
     </>
   );
 }
