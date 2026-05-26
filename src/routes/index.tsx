@@ -239,7 +239,6 @@ function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
 }
 
 function About() {
-  const chips = ["Creative Thinking", "Detail Oriented", "Problem Solver"];
   return (
     <section id="about" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
@@ -247,23 +246,22 @@ function About() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="reveal">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              A creative soul with a love for{" "}
-              <span className="text-foreground">design, data, and delightful user experiences.</span>
+              I'm an aspiring Data Analyst and UI/UX enthusiast currently studying Computer Science with a specialization in AI &amp; ML. I work at the intersection of{" "}
+              <span className="text-foreground">data, design, and technology</span>{" "}
+              — using data to ask better questions, design to make answers usable, and code to bring them to life.
             </p>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-              I blend UI/UX design with data-driven insights to build products
-              that aren't just beautiful, but also impactful — clear,
-              well-considered, and thoughtfully made.
+              I value clarity, structured thinking, and continuous learning. I'm happiest when I'm shipping small, well-considered things that make a real difference.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              {chips.map((c) => (
-                <span
-                  key={c}
-                  className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-primary" /> {c}
-                </span>
-              ))}
+            <div className="mt-8 grid sm:grid-cols-2 gap-4">
+              <div className="rounded-2xl border border-border bg-card/60 p-5">
+                <div className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">Focus</div>
+                <div className="mt-2 font-semibold">Data · Design · ML</div>
+              </div>
+              <div className="rounded-2xl border border-border bg-card/60 p-5">
+                <div className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">Currently</div>
+                <div className="mt-2 font-semibold">Learning &amp; building</div>
+              </div>
             </div>
             <a
               href="#education"
@@ -505,6 +503,53 @@ function CaseStudy() {
   );
 }
 
+function FloatingBackdrop() {
+  // Floating gradient blobs + drifting little icons (hearts, stars, sparkles, planes).
+  const icons = [
+    { Icon: Heart, cls: "left-[6%] top-[18%]", delay: "0s", dur: "14s", size: "w-4 h-4" },
+    { Icon: Star, cls: "left-[22%] top-[72%]", delay: "2s", dur: "18s", size: "w-3 h-3" },
+    { Icon: Sparkles, cls: "left-[40%] top-[12%]", delay: "1s", dur: "16s", size: "w-4 h-4" },
+    { Icon: Star, cls: "left-[58%] top-[60%]", delay: "3s", dur: "20s", size: "w-3 h-3" },
+    { Icon: Heart, cls: "left-[78%] top-[30%]", delay: "0.5s", dur: "15s", size: "w-3.5 h-3.5" },
+    { Icon: Sparkles, cls: "left-[88%] top-[78%]", delay: "2.5s", dur: "17s", size: "w-4 h-4" },
+    { Icon: Star, cls: "left-[14%] top-[44%]", delay: "4s", dur: "19s", size: "w-3 h-3" },
+    { Icon: Heart, cls: "left-[66%] top-[8%]", delay: "1.5s", dur: "13s", size: "w-3.5 h-3.5" },
+  ];
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      {/* Gradient blobs */}
+      <div className="absolute -top-24 -left-20 w-[420px] h-[420px] rounded-full bg-primary/15 blur-[120px] animate-float-slow" />
+      <div className="absolute top-1/3 -right-24 w-[480px] h-[480px] rounded-full bg-primary/10 blur-[140px] animate-float-med" />
+      <div className="absolute bottom-0 left-1/3 w-[360px] h-[360px] rounded-full bg-primary/10 blur-[120px] animate-float-fast" />
+      {/* Particles */}
+      {Array.from({ length: 24 }).map((_, i) => (
+        <span
+          key={i}
+          className="absolute block rounded-full bg-primary/40 animate-twinkle"
+          style={{
+            width: `${2 + (i % 3)}px`,
+            height: `${2 + (i % 3)}px`,
+            left: `${(i * 37) % 100}%`,
+            top: `${(i * 53) % 100}%`,
+            animationDelay: `${(i % 7) * 0.6}s`,
+            animationDuration: `${4 + (i % 5)}s`,
+          }}
+        />
+      ))}
+      {/* Drifting icons */}
+      {icons.map(({ Icon, cls, delay, dur, size }, i) => (
+        <div
+          key={i}
+          className={`absolute ${cls} text-primary/50 animate-drift`}
+          style={{ animationDelay: delay, animationDuration: dur }}
+        >
+          <Icon className={size} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function Skills() {
   const groups = [
     { icon: BarChart3, title: "Data Analysis", items: ["Pandas", "NumPy"] },
@@ -521,14 +566,15 @@ function Skills() {
     { icon: Code2, title: "Tools", items: ["GitHub", "VS Code", "Google Colab"] },
   ];
   return (
-    <section id="skills" className="scroll-mt-20 px-6 py-24">
-      <div className="mx-auto max-w-6xl">
+    <section id="skills" className="scroll-mt-20 px-6 py-24 relative overflow-hidden">
+      <FloatingBackdrop />
+      <div className="relative mx-auto max-w-6xl">
         <SectionTitle eyebrow="Toolkit" title="Skills" />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {groups.map((g) => (
             <div
               key={g.title}
-              className="reveal rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
+              className="reveal rounded-2xl border border-border bg-card/70 backdrop-blur p-6 transition-colors hover:border-primary/40"
             >
               <div className="w-10 h-10 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center">
                 <g.icon className="w-4 h-4 text-primary" />
