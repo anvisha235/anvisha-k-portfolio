@@ -181,7 +181,18 @@
   .animate-wave-hand  { animation: wave 2.6s ease-in-out infinite; transform-origin: 70% 80%; }
   .animate-spin-slow  { animation: spin 28s linear infinite; }
   .animate-spin-rev   { animation: spin 36s linear infinite reverse; }
+  .animate-twinkle    { animation: twinkle 5s ease-in-out infinite; }
+  .animate-drift      { animation: drift 16s ease-in-out infinite; }
 }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50%      { opacity: 1; transform: scale(1.2); }
+}
+@keyframes drift {
+  0%   { transform: translate(0, 0) rotate(0deg); opacity: 0.4; }
+  50%  { transform: translate(20px, -28px) rotate(12deg); opacity: 0.9; }
+  100% { transform: translate(0, 0) rotate(0deg); opacity: 0.4;
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
