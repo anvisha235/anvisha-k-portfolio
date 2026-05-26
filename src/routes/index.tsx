@@ -239,7 +239,6 @@ function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
 }
 
 function About() {
-  const chips = ["Creative Thinking", "Detail Oriented", "Problem Solver"];
   return (
     <section id="about" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
@@ -247,23 +246,22 @@ function About() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="reveal">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              A creative soul with a love for{" "}
-              <span className="text-foreground">design, data, and delightful user experiences.</span>
+              I'm an aspiring Data Analyst and UI/UX enthusiast currently studying Computer Science with a specialization in AI &amp; ML. I work at the intersection of{" "}
+              <span className="text-foreground">data, design, and technology</span>{" "}
+              — using data to ask better questions, design to make answers usable, and code to bring them to life.
             </p>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-              I blend UI/UX design with data-driven insights to build products
-              that aren't just beautiful, but also impactful — clear,
-              well-considered, and thoughtfully made.
+              I value clarity, structured thinking, and continuous learning. I'm happiest when I'm shipping small, well-considered things that make a real difference.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              {chips.map((c) => (
-                <span
-                  key={c}
-                  className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-primary" /> {c}
-                </span>
-              ))}
+            <div className="mt-8 grid sm:grid-cols-2 gap-4">
+              <div className="rounded-2xl border border-border bg-card/60 p-5">
+                <div className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">Focus</div>
+                <div className="mt-2 font-semibold">Data · Design · ML</div>
+              </div>
+              <div className="rounded-2xl border border-border bg-card/60 p-5">
+                <div className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">Currently</div>
+                <div className="mt-2 font-semibold">Learning &amp; building</div>
+              </div>
             </div>
             <a
               href="#education"
