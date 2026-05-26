@@ -112,7 +112,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <InteractiveCursor />
       <Outlet />
     </QueryClientProvider>
   );
 }
+
