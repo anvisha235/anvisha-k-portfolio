@@ -644,7 +644,7 @@ function Contact() {
   return (
     <section id="contact" className="scroll-mt-20 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-[1.4fr_1fr] gap-10 items-center">
+        <div className="grid md:grid-cols-[1.2fr_1fr] gap-6 items-stretch">
           <div
             className="reveal relative overflow-hidden rounded-3xl border border-border bg-card p-8 md:p-12"
             style={{
@@ -701,15 +701,15 @@ function Contact() {
             </div>
           </div>
 
-          <div className="reveal relative">
-            <div className="relative mx-auto max-w-md animate-breathe">
+          <div className="reveal relative flex items-end justify-center">
+            <div className="relative h-full w-full flex items-end justify-center animate-breathe">
               <img
                 src={avatarPoint}
                 alt="Anvisha Kadhao pointing toward contact details"
                 loading="lazy"
                 width={768}
                 height={1152}
-                className="w-full h-auto"
+                className="h-full w-auto max-w-none object-contain"
               />
             </div>
           </div>
