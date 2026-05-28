@@ -612,8 +612,9 @@ function Certs() {
     },
   ];
   return (
-    <section id="certs" className="scroll-mt-20 px-6 py-24">
-      <div className="mx-auto max-w-6xl">
+    <section id="certs" className="scroll-mt-20 px-6 py-24 relative overflow-hidden">
+      <FloatingBackdrop />
+      <div className="relative mx-auto max-w-6xl">
         <SectionTitle eyebrow="Learning" title="Certifications" />
         <div className="grid md:grid-cols-3 gap-5">
           {items.map((c) => (
@@ -642,8 +643,9 @@ function Certs() {
 
 function Contact() {
   return (
-    <section id="contact" className="scroll-mt-20 px-6 py-24">
-      <div className="mx-auto max-w-6xl">
+    <section id="contact" className="scroll-mt-20 px-6 py-24 relative overflow-hidden">
+      <FloatingBackdrop />
+      <div className="relative mx-auto max-w-6xl">
         <div className="grid md:grid-cols-[1.4fr_1fr] gap-10 items-center">
           <div
             className="reveal relative overflow-hidden rounded-3xl border border-border bg-card p-8 md:p-12"
