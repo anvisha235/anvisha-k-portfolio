@@ -646,7 +646,7 @@ function Contact() {
     <section id="contact" className="scroll-mt-20 px-6 py-24 relative overflow-hidden">
       <FloatingBackdrop />
       <div className="relative mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-[1.4fr_1fr] gap-10 items-center">
+        <div className="grid md:grid-cols-[1.4fr_1fr] gap-4 md:gap-2 items-center">
           <div
             className="reveal relative overflow-hidden rounded-3xl border border-border bg-card p-8 md:p-12"
             style={{
@@ -703,15 +703,15 @@ function Contact() {
             </div>
           </div>
 
-          <div className="reveal relative">
-            <div className="relative mx-auto max-w-md animate-breathe">
+          <div className="reveal relative md:-ml-12 lg:-ml-20">
+            <div className="relative mx-auto max-w-lg lg:max-w-xl animate-breathe">
               <img
                 src={avatarPoint}
                 alt="Anvisha Kadhao pointing toward contact details"
                 loading="lazy"
                 width={768}
                 height={1152}
-                className="w-full h-auto"
+                className="w-full h-auto scale-110 lg:scale-125 origin-left"
               />
             </div>
           </div>
@@ -734,9 +734,12 @@ function Footer() {
 function Index() {
   const ref = useReveal();
   return (
-    <div ref={ref} className="min-h-screen bg-background text-foreground antialiased">
+    <div ref={ref} className="relative min-h-screen bg-background text-foreground antialiased">
+      <div aria-hidden className="fixed inset-0 -z-10 pointer-events-none">
+        <FloatingBackdrop />
+      </div>
       <Nav />
-      <main>
+      <main className="relative">
         <Hero />
         <About />
         <Education />
