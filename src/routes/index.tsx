@@ -703,15 +703,15 @@ function Contact() {
             </div>
           </div>
 
-          <div className="reveal relative">
-            <div className="relative mx-auto max-w-md animate-breathe">
+          <div className="reveal relative md:-ml-12 lg:-ml-20">
+            <div className="relative mx-auto max-w-lg lg:max-w-xl animate-breathe">
               <img
                 src={avatarPoint}
                 alt="Anvisha Kadhao pointing toward contact details"
                 loading="lazy"
                 width={768}
                 height={1152}
-                className="w-full h-auto"
+                className="w-full h-auto scale-110 lg:scale-125 origin-left"
               />
             </div>
           </div>
