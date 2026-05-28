@@ -646,7 +646,7 @@ function Contact() {
     <section id="contact" className="scroll-mt-20 px-6 py-24 relative overflow-hidden">
       <FloatingBackdrop />
       <div className="relative mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-[1.4fr_1fr] gap-10 items-center">
+        <div className="grid md:grid-cols-[1.4fr_1fr] gap-4 md:gap-2 items-center">
           <div
             className="reveal relative overflow-hidden rounded-3xl border border-border bg-card p-8 md:p-12"
             style={{
