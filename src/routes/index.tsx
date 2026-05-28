@@ -734,9 +734,12 @@ function Footer() {
 function Index() {
   const ref = useReveal();
   return (
-    <div ref={ref} className="min-h-screen bg-background text-foreground antialiased">
+    <div ref={ref} className="relative min-h-screen bg-background text-foreground antialiased">
+      <div aria-hidden className="fixed inset-0 -z-10 pointer-events-none">
+        <FloatingBackdrop />
+      </div>
       <Nav />
-      <main>
+      <main className="relative">
         <Hero />
         <About />
         <Education />
